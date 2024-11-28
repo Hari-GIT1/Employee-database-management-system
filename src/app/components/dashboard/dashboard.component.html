@@ -1,3 +1,12 @@
-<p>dashboard works!</p>
-<button (click)="onClick()">Logout</button>
-<router-outlet></router-outlet>
+<div  class="parent">
+    <div class="child1 flex-centre">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.04kHYI_nk-Q3NkIJfw34UAHaHa&pid=Api&P=0&h=180" width="150px" height="70px">
+        <a href="" routerLink="home">Home</a>
+        <a href="" routerLink="create">Create Employee</a>
+        <a href="" routerLink="details">All Employees</a>
+        <button class="btn btn-warning">Log out</button>
+    </div>
+    <div class="child2">
+        <router-outlet></router-outlet>
+    </div>
+</div>
