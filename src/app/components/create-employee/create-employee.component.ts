@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-create-employee',
@@ -30,17 +31,20 @@ export class CreateEmployeeComponent {
     return this.employeeForm.get('hikes') as FormArray;
   }
 
-  addHike(){
-
+  addHike() {
     this.hikeFormArray.push(
       new FormGroup({
-        year:new FormControl(),
-        percentage:new FormControl()
+        year: new FormControl(),
+        percentage: new FormControl()
       })
     )
-
   }
-  constructor() {
+
+  del(i: number) {
+    this.hikeFormArray.removeAt(i);
+  }
+
+  constructor(private _employeeService: EmployeeService) {
 
     this.employeeForm.get('type')?.valueChanges.subscribe(
       (data: any) => {
@@ -56,8 +60,17 @@ export class CreateEmployeeComponent {
       }
     )
   }
-  onClick(){
+  
+  onClick() {
     console.log(this.employeeForm.value)
+    this._employeeService.createEmployee(this.employeeForm.value).subscribe(
+      (data: any) => {
+        alert("Employee created Successfully")
+      },
+      (err: any) => {
+        alert("INTERNAL SERVER ERROR")
+      }
+    )
   }
 
 }
