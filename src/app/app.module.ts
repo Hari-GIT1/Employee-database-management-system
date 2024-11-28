@@ -8,11 +8,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { EmployeedetailsComponent } from './components/employeedetails/employeedetails.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatIconModule} from '@angular/material/icon';
     DashboardComponent,
     HomeComponent,
     CreateEmployeeComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    EmployeedetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,71 @@
-<p>employees works!</p>
+<div class="parent">
+    <div class="child1 flex-centre">
+        <div class="search">
+            <label for="">Serch for Employee :</label>
+            <input type="text" [(ngModel)]="key">
+            <button class="btn btn-warning" (click)="search()">Search</button>
+        </div>
+        <div class="pagination">
+            <label for="">Pagination :</label>
+            <select name="" id="" [(ngModel)]="value1">
+                <option value=""></option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+            </select>
+            <select name="" id="" [(ngModel)]="value2">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button class="btn btn-primary" (click)="show()">Show</button>
+        </div>
+        <div class="sort">
+            <label for="">Sort :</label>
+            <select name="" id="" [(ngModel)]="key1">
+                <option value=""></option>
+                <option value="name">Name</option>
+                <option value="company">Company name</option>
+                <option value="role">Role</option>
+                <option value="package">Package</option>
+            </select>
+            <select name="" id="" [(ngModel)]="key2">
+                <option value=""></option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+            <button class="btn btn-warning" (click)="sort()">Sort</button>
+        </div>
+
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Company Name</th>
+                    <th>Role</th>
+                    <th>DOB</th>
+                    <th>Package</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr [ngStyle]="employee.package>900000?{'background-color':'green'}:{'background-color':'red'}" *ngFor="let employee of employees">
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.company}}</td>
+                    <td>{{employee.role}}</td>
+                    <td>{{employee.dob}}</td>
+                    <td >{{employee.package}}</td>
+                    <td>
+                        <Button class="btn btn-primary" (click)="view(employee.id)" [routerLink]="['/details',employee.id]"  value="complete">View</Button>
+                        <button class="btn btn-danger" (click)="delete(employee.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
